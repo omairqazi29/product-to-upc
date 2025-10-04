@@ -22,17 +22,14 @@ async function searchProduct() {
     resultsDiv.innerHTML = '';
 
     try {
-        // Using CORS proxy to access UPCitemdb API
-        const apiUrl = `https://api.upcitemdb.com/prod/trial/lookup?s=${encodeURIComponent(query)}`;
-        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
-
-        const response = await fetch(proxyUrl);
+        // Using Open Food Facts API for product search
+        const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(query)}&search_simple=1&action=process&json=1&page_size=20`);
         const data = await response.json();
 
         loading.classList.add('hidden');
 
-        if (data.items && data.items.length > 0) {
-            displayResults(data.items);
+        if (data.products && data.products.length > 0) {
+            displayResults(data.products);
         } else {
             showError('No products found. Try a different search term.');
         }
@@ -50,13 +47,17 @@ function displayResults(items) {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
 
+        const barcode = item.code || item._id || 'N/A';
+        const productName = item.product_name || item.product_name_en || 'Unknown Product';
+        const brand = item.brands || '';
+        const imageUrl = item.image_url || item.image_front_url || '';
+
         productCard.innerHTML = `
-            ${item.images && item.images.length > 0 ? `<img src="${item.images[0]}" alt="${item.title}" />` : ''}
+            ${imageUrl ? `<img src="${imageUrl}" alt="${productName}" />` : ''}
             <div class="product-info">
-                <h3>${item.title || 'Unknown Product'}</h3>
-                <p class="upc"><strong>UPC:</strong> ${item.upc || item.ean || 'N/A'}</p>
-                ${item.brand ? `<p><strong>Brand:</strong> ${item.brand}</p>` : ''}
-                ${item.description ? `<p class="description">${item.description}</p>` : ''}
+                <h3>${productName}</h3>
+                <p class="upc"><strong>Barcode:</strong> ${barcode}</p>
+                ${brand ? `<p><strong>Brand:</strong> ${brand}</p>` : ''}
             </div>
         `;
 
