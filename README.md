@@ -14,7 +14,7 @@ A clean, responsive web application that allows you to search for product UPC/EA
 
 ## Demo
 
-Visit the live demo: [Product to UPC Lookup](https://YOUR_USERNAME.github.io/product-to-upc/)
+Visit the live demo: [Product to UPC Lookup](https://omairqazi29.github.io/product-to-upc/)
 
 ## Usage
 
@@ -37,7 +37,7 @@ This application uses the [UPCitemdb API](https://www.upcitemdb.com/) to fetch p
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/product-to-upc.git
+git clone https://github.com/omairqazi29/product-to-upc.git
 ```
 
 2. Open `index.html` in your browser
