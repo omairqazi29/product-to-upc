@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product to UPC Lookup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Product to UPC Lookup</h1>
+        <p class="subtitle">Enter a product name to find its UPC code</p>
+
+        <div class="search-box">
+            <input type="text" id="productInput" placeholder="Enter product name..." />
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div id="loading" class="loading hidden">Searching...</div>
+
+        <div id="results" class="results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
