@@ -22,8 +22,11 @@ async function searchProduct() {
     resultsDiv.innerHTML = '';
 
     try {
-        // Using UPCitemdb API
-        const response = await fetch(`https://api.upcitemdb.com/prod/trial/lookup?s=${encodeURIComponent(query)}`);
+        // Using CORS proxy to access UPCitemdb API
+        const apiUrl = `https://api.upcitemdb.com/prod/trial/lookup?s=${encodeURIComponent(query)}`;
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
+
+        const response = await fetch(proxyUrl);
         const data = await response.json();
 
         loading.classList.add('hidden');
