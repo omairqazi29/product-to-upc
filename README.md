@@ -24,14 +24,14 @@ Visit the live demo: [Product to UPC Lookup](https://omairqazi29.github.io/produ
 
 ## API
 
-This application uses the [UPCitemdb API](https://www.upcitemdb.com/) to fetch product information and UPC codes.
+This application uses the [Open Food Facts API](https://world.openfoodfacts.org/) to fetch product information and barcodes.
 
 ## Technologies
 
 - HTML5
 - CSS3
 - Vanilla JavaScript
-- UPCitemdb API
+- Open Food Facts API
 
 ## Local Development
 
